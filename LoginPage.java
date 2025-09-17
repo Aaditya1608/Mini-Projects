@@ -1,4 +1,3 @@
-package Akshatha;
 
 import javax.swing.*;
 import java.awt.*;
