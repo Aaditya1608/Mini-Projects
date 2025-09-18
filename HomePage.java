@@ -20,17 +20,21 @@ public class HomePage extends JFrame {
         add(electricityBillButton);
         add(backButton);
 
+        // Open Calculator window on button click
         calculatorButton.addActionListener(e -> {
-            System.out.println("Calculator button clicked");
+            Calculator calculator = new Calculator();
+            calculator.setVisible(true);
         });
 
+        // Open ElectricityBillCalculator window on button click
         electricityBillButton.addActionListener(e -> {
-            System.out.println("Electricity Bill Calculator button clicked");
+            ElectricityBillCalculator billCalculator = new ElectricityBillCalculator();
+            billCalculator.setVisible(true);
         });
 
         backButton.addActionListener(e -> {
-            System.out.println("Back button clicked");
-
+            // Example back button logic: just dispose this window
+            dispose();
         });
     }
 
