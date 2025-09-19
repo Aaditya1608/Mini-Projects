@@ -13,9 +13,10 @@ public class HomePage extends JFrame {
 
         JButton calculatorButton = new JButton("Calculator");
         JButton electricityBillButton = new JButton("Electricity Bill Calculator");
-
+        JButton empSalary = new JButton("Employee PaySlip");
         add(calculatorButton);
         add(electricityBillButton);
+        add(empSalary);
 
         calculatorButton.addActionListener(e -> {
             Calculator calculator = new Calculator();
@@ -25,6 +26,11 @@ public class HomePage extends JFrame {
         electricityBillButton.addActionListener(e -> {
             ElectricityBillCalculator billCalculator = new ElectricityBillCalculator();
             billCalculator.setVisible(true);
+        });
+
+        empSalary.addActionListener(e -> {
+            MainSwing mainswing = new MainSwing();
+            mainswing.setVisible(true);
         });
     }
 
