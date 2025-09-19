@@ -63,7 +63,17 @@ class AssistantProfessor extends Employee {
 }
 
 public class MainSwing {
+
+
+    public static void launchWindow() {
+        SwingUtilities.invokeLater(MainSwing::createAndShowGUI);
+    }
+
     public static void main(String[] args) {
+        launchWindow();
+    }
+
+    private static void createAndShowGUI() {
         JFrame frame = new JFrame();
         frame.setTitle("Employee Pay Slip");
         frame.setSize(400, 400);
@@ -127,7 +137,6 @@ public class MainSwing {
         employeeTypeCombo.setBounds(125, 205, 200, 25);
         frame.add(employeeTypeCombo);
 
-
         JButton btn1 = new JButton("Generate PaySlip");
         btn1.setBounds(25, 240, 150, 25);
         frame.add(btn1);
@@ -162,6 +171,7 @@ public class MainSwing {
             }
         });
 
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     
@@ -171,7 +181,6 @@ public class MainSwing {
         paySlipFrame.setLayout(new GridLayout(0, 1, 10, 10)); // Use GridLayout for better organization
         paySlipFrame.setLocationRelativeTo(null); // Center the new frame
 
-       
         paySlipFrame.add(new JLabel("PAY SLIP DETAILS"));
         
         paySlipFrame.add(new JLabel("Name: " + employee.empName));
