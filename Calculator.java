@@ -1,81 +1,82 @@
 import javax.swing.*;
 import java.awt.event.*;
-public class Calculator {
-    public static void main(String args[]) {
-        JFrame frame = new JFrame();
-        frame.setTitle("Calculator");
-        frame.setSize(400,300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
+
+public class Calculator extends JFrame {
+    public Calculator() {
+        setTitle("Calculator");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(null);
 
         JLabel lbl1 = new JLabel("Operand 1");
-        lbl1.setBounds(25, 25,100, 25);
-        frame.add(lbl1);
+        lbl1.setBounds(25, 25, 100, 25);
+        add(lbl1);
 
         JTextField txt1 = new JTextField();
         txt1.setBounds(125, 25, 100, 25);
-        frame.add(txt1);
+        add(txt1);
 
         JLabel lbl2 = new JLabel("Operand 2");
-        lbl2.setBounds(25, 75,100, 25);
-        frame.add(lbl2);
+        lbl2.setBounds(25, 75, 100, 25);
+        add(lbl2);
 
         JTextField txt2 = new JTextField();
         txt2.setBounds(125, 75, 100, 25);
-        frame.add(txt2);
+        add(txt2);
 
-        JButton btn1 = new JButton("+");
-        btn1.setBounds(25,120,50,25);
-        frame.add(btn1);
-        JButton btn2 = new JButton("-");
-        btn2.setBounds(85,120,50,25);
-        frame.add(btn2);
-        JButton btn3 = new JButton("*");
-        btn3.setBounds(145,120,50,25);
-        frame.add(btn3);
-        JButton btn4 = new JButton("/");
-        btn4.setBounds(205,120,50,25);
-        frame.add(btn4);
+        JButton btnAdd = new JButton("+");
+        btnAdd.setBounds(25, 120, 50, 25);
+        add(btnAdd);
 
-        JLabel lbl3 = new JLabel("Result");
-        lbl3.setBounds(25,160,100,25);
-        frame.add(lbl3);
+        JButton btnSub = new JButton("-");
+        btnSub.setBounds(85, 120, 50, 25);
+        add(btnSub);
 
-        JTextField txt3 = new JTextField();
-        txt3.setBounds(125, 160, 100, 25);
-        txt3.setEditable(false);
-        frame.add(txt3);
+        JButton btnMul = new JButton("*");
+        btnMul.setBounds(145, 120, 50, 25);
+        add(btnMul);
+
+        JButton btnDiv = new JButton("/");
+        btnDiv.setBounds(205, 120, 50, 25);
+        add(btnDiv);
+
+        JLabel lblResult = new JLabel("Result");
+        lblResult.setBounds(25, 160, 100, 25);
+        add(lblResult);
+
+        JTextField txtResult = new JTextField();
+        txtResult.setBounds(125, 160, 100, 25);
+        txtResult.setEditable(false);
+        add(txtResult);
 
         ActionListener listener = e -> {
-            try{
+            try {
                 double num1 = Double.parseDouble(txt1.getText());
                 double num2 = Double.parseDouble(txt2.getText());
-                double result =0;
-                if(e.getSource() == btn1){
+                double result = 0;
+                if (e.getSource() == btnAdd) {
                     result = num1 + num2;
-                }
-                else if(e.getSource()== btn2){
+                } else if (e.getSource() == btnSub) {
                     result = num1 - num2;
-                }
-                else if(e.getSource()== btn3){
-                    result = num1*num2;
-                }
-                else if(e.getSource()==btn4){
-                    if(num2==0){
-                        JOptionPane.showMessageDialog(frame, "Cannot divide by zero");
+                } else if (e.getSource() == btnMul) {
+                    result = num1 * num2;
+                } else if (e.getSource() == btnDiv) {
+                    if (num2 == 0) {
+                        JOptionPane.showMessageDialog(this, "Cannot divide by zero");
                         return;
                     }
-                    result = num1/num2;
+                    result = num1 / num2;
                 }
-                txt3.setText(String.valueOf(result));
-            }catch(NumberFormatException ex){
-                JOptionPane.showMessageDialog(frame,"Please enter valid numbers");
+                txtResult.setText(String.valueOf(result));
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Please enter valid numbers");
             }
         };
-        btn1.addActionListener(listener);
-        btn2.addActionListener(listener);
-        btn3.addActionListener(listener);
-        btn4.addActionListener(listener);
-        frame.setVisible(true);
+
+        btnAdd.addActionListener(listener);
+        btnSub.addActionListener(listener);
+        btnMul.addActionListener(listener);
+        btnDiv.addActionListener(listener);
     }
 }
