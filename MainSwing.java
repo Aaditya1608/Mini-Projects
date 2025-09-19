@@ -62,75 +62,74 @@ class AssistantProfessor extends Employee {
     }
 }
 
-public class MainSwing {
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setTitle("Employee Pay Slip");
-        frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
+public class MainSwing extends JFrame {
+    public MainSwing() {
+        setTitle("Employee Pay Slip");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Change to DISPOSE_ON_CLOSE
+        setLayout(null);
+        setLocationRelativeTo(null); // Center the frame
 
         JLabel lbl1 = new JLabel("Employee Name");
         lbl1.setBounds(25, 25, 100, 25);
-        frame.add(lbl1);
+        add(lbl1);
 
         JTextField txt1 = new JTextField();
         txt1.setBounds(125, 25, 200, 25);
-        frame.add(txt1);
+        add(txt1);
 
         JLabel lbl2 = new JLabel("Employee ID");
         lbl2.setBounds(25, 55, 100, 25);
-        frame.add(lbl2);
+        add(lbl2);
 
         JTextField txt2 = new JTextField();
         txt2.setBounds(125, 55, 200, 25);
-        frame.add(txt2);
+        add(txt2);
 
         JLabel lbl3 = new JLabel("Address");
         lbl3.setBounds(25, 85, 100, 25);
-        frame.add(lbl3);
+        add(lbl3);
 
         JTextField txt3 = new JTextField();
         txt3.setBounds(125, 85, 200, 25);
-        frame.add(txt3);
+        add(txt3);
 
         JLabel lbl4 = new JLabel("Email ID");
         lbl4.setBounds(25, 115, 100, 25);
-        frame.add(lbl4);
+        add(lbl4);
 
         JTextField txt4 = new JTextField();
         txt4.setBounds(125, 115, 200, 25);
-        frame.add(txt4);
+        add(txt4);
 
         JLabel lbl5 = new JLabel("Mobile No.");
         lbl5.setBounds(25, 145, 100, 25);
-        frame.add(lbl5);
+        add(lbl5);
 
         JTextField txt5 = new JTextField();
         txt5.setBounds(125, 145, 200, 25);
-        frame.add(txt5);
+        add(txt5);
 
         JLabel lbl6 = new JLabel("Basic Pay");
         lbl6.setBounds(25, 175, 100, 25);
-        frame.add(lbl6);
+        add(lbl6);
 
         JTextField txt6 = new JTextField();
         txt6.setBounds(125, 175, 200, 25);
-        frame.add(txt6);
+        add(txt6);
         
         JLabel lbl7 = new JLabel("Employee Type");
         lbl7.setBounds(25, 205, 100, 25);
-        frame.add(lbl7);
+        add(lbl7);
 
         String[] employeeTypes = {"Professor", "Associate Professor", "Assistant Professor"};
         JComboBox<String> employeeTypeCombo = new JComboBox<>(employeeTypes);
         employeeTypeCombo.setBounds(125, 205, 200, 25);
-        frame.add(employeeTypeCombo);
-
+        add(employeeTypeCombo);
 
         JButton btn1 = new JButton("Generate PaySlip");
         btn1.setBounds(25, 240, 150, 25);
-        frame.add(btn1);
+        add(btn1);
 
         btn1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -157,21 +156,18 @@ public class MainSwing {
                         displayPaySlip(employee);
                     }
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(frame, "Please enter a valid number for Basic Pay.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(MainSwing.this, "Please enter a valid number for Basic Pay.", "Input Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-
-        frame.setVisible(true);
     }
-    
-    private static void displayPaySlip(Employee employee) {
+
+    private void displayPaySlip(Employee employee) {
         JFrame paySlipFrame = new JFrame("Pay Slip");
         paySlipFrame.setSize(400, 400);
-        paySlipFrame.setLayout(new GridLayout(0, 1, 10, 10)); // Use GridLayout for better organization
-        paySlipFrame.setLocationRelativeTo(null); // Center the new frame
+        paySlipFrame.setLayout(new GridLayout(0, 1, 10, 10));
+        paySlipFrame.setLocationRelativeTo(null);
 
-       
         paySlipFrame.add(new JLabel("PAY SLIP DETAILS"));
         
         paySlipFrame.add(new JLabel("Name: " + employee.empName));

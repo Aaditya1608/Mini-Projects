@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class HomePage extends JFrame {
 
@@ -11,26 +13,34 @@ public class HomePage extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());
 
-        JButton calculatorButton = new JButton("Calculator");
-        JButton electricityBillButton = new JButton("Electricity Bill Calculator");
-        JButton empSalary = new JButton("Employee PaySlip");
-        add(calculatorButton);
-        add(electricityBillButton);
-        add(empSalary);
+        // Array of options for the JComboBox
+        String[] options = {"Select an application", "Calculator", "Electricity Bill Calculator", "Employee PaySlip"};
+        JComboBox<String> appSelector = new JComboBox<>(options);
+        add(appSelector);
 
-        calculatorButton.addActionListener(e -> {
-            Calculator calculator = new Calculator();
-            calculator.setVisible(true);
-        });
-
-        electricityBillButton.addActionListener(e -> {
-            ElectricityBillCalculator billCalculator = new ElectricityBillCalculator();
-            billCalculator.setVisible(true);
-        });
-
-        empSalary.addActionListener(e -> {
-            MainSwing mainswing = new MainSwing();
-            mainswing.setVisible(true);
+        // Add an ActionListener to the JComboBox
+        appSelector.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedOption = (String) appSelector.getSelectedItem();
+                switch (selectedOption) {
+                    case "Calculator":
+                        Calculator calculator = new Calculator();
+                        calculator.setVisible(true);
+                        break;
+                    case "Electricity Bill Calculator":
+                        ElectricityBillCalculator billCalculator = new ElectricityBillCalculator();
+                        billCalculator.setVisible(true);
+                        break;
+                    case "Employee PaySlip":
+                        MainSwing mainswing = new MainSwing();
+                        mainswing.setVisible(true);
+                        break;
+                    default:
+                        // Do nothing if "Select an application" is chosen
+                        break;
+                }
+            }
         });
     }
 
