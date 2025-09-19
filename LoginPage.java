@@ -7,7 +7,7 @@ public class LoginPage extends JFrame implements ActionListener {
     private JPasswordField passwordField;
     private JButton loginButton;
 
-    private final String USERNAME = "admin";
+    private final String USERNAME = "Admin";
     private final String PASSWORD = "1234";
 
     public LoginPage() {
@@ -37,7 +37,7 @@ public class LoginPage extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    @Override
+  
     public void actionPerformed(ActionEvent e) {
         String enteredUsername = usernameField.getText();
         String enteredPassword = new String(passwordField.getPassword());
