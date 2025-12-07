@@ -8,13 +8,13 @@ public class HomePage extends JFrame {
 
     public HomePage() {
         setTitle("Home Page");
-        setSize(300, 150);
+        setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());
 
         // Array of options for the JComboBox
-        String[] options = {"Select an application", "Calculator", "Electricity Bill Calculator", "Employee PaySlip"};
+        String[] options = {"Select an application", "Electricity Bill Calculator", "Employee PaySlip","Shape Area","Exception Program","Multithreading operation", "Producer-Consumer Program"};
         JComboBox<String> appSelector = new JComboBox<>(options);
         add(appSelector);
 
@@ -24,9 +24,13 @@ public class HomePage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String selectedOption = (String) appSelector.getSelectedItem();
                 switch (selectedOption) {
-                    case "Calculator":
-                        Calculator calculator = new Calculator();
-                        calculator.setVisible(true);
+                    case "Exception Program":
+                        ExceptionDemoGUI exp = new ExceptionDemoGUI();
+                        exp.setVisible(true);
+                        break;
+                    case "Shape Area":
+                        ShapeGUI shape = new ShapeGUI();
+                        shape.setVisible(true);
                         break;
                     case "Electricity Bill Calculator":
                         ElectricityBillCalculator billCalculator = new ElectricityBillCalculator();
@@ -36,6 +40,15 @@ public class HomePage extends JFrame {
                         MainSwing mainswing = new MainSwing();
                         mainswing.setVisible(true);
                         break;
+                    case "Multithreading operation":
+                        ThreadGUI thread = new ThreadGUI();
+                        thread.setVisible(true);
+                        break;
+                    case "Producer-Consumer Program":
+                        ProducerConsumerGUI pc = new ProducerConsumerGUI();
+                        pc.setVisible(true);
+                        break;
+
                     default:
                         // Do nothing if "Select an application" is chosen
                         break;
