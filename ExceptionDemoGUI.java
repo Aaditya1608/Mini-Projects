@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
 
 public class ExceptionDemoGUI extends JFrame {
 
@@ -44,6 +44,7 @@ public class ExceptionDemoGUI extends JFrame {
 
    
     public void withException() {
+        outputArea.setText("");
         try {
             println("Try of WithException");
             int x = 10 / 0;
@@ -57,6 +58,7 @@ public class ExceptionDemoGUI extends JFrame {
     }
 
     public void noException() {
+        outputArea.setText("");
         try {
             println("Try of noException");
             int x = 10 / 2;
@@ -70,6 +72,7 @@ public class ExceptionDemoGUI extends JFrame {
     }
 
     public void withReturn() {
+        outputArea.setText("");
         try {
             println("Try of withReturn");
             return;

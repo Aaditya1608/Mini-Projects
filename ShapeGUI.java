@@ -34,10 +34,16 @@ public class ShapeGUI extends JFrame implements ActionListener {
     JButton calcButton;
 
     ShapeGUI() {
+
         setTitle("Shape Area Calculator");
-        setSize(250,420);
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
+
+        // Main container with vertical layout
+        setLayout(new BorderLayout());
+
+        // Panel for labels and text fields
+        JPanel inputPanel = new JPanel(new GridLayout(5, 2, 10, 10));
 
         shapeList = new JComboBox<>(new String[]{"Rectangle", "Triangle", "Circle"});
 
@@ -49,30 +55,33 @@ public class ShapeGUI extends JFrame implements ActionListener {
 
         areaLabel = new JLabel("Area:");
         areaField = new JTextField(10);
-        areaField.setEditable(false); 
+        areaField.setEditable(false);
 
         calcButton = new JButton("Calculate Area");
         calcButton.addActionListener(this);
 
-        add(new JLabel("Select Shape:"));
-        add(shapeList);
-        add(label1);
-        add(dimField1);
-        add(label2);
-        add(dimField2);
-        add(areaLabel);
-        add(areaField);
-        add(calcButton);
+        // Add components row-wise
+        inputPanel.add(new JLabel("Select Shape:"));
+        inputPanel.add(shapeList);
 
-        
+        inputPanel.add(label1);
+        inputPanel.add(dimField1);
+
+        inputPanel.add(label2);
+        inputPanel.add(dimField2);
+
+        inputPanel.add(areaLabel);
+        inputPanel.add(areaField);
+
+        // Add panel + button
+        add(inputPanel, BorderLayout.CENTER);
+        add(calcButton, BorderLayout.SOUTH);
+
+        // Hide dim2 for circle
         shapeList.addActionListener(e -> {
-            if (shapeList.getSelectedItem().equals("Circle")) {
-                label2.setVisible(false);
-                dimField2.setVisible(false);
-            } else {
-                label2.setVisible(true);
-                dimField2.setVisible(true);
-            }
+            boolean isCircle = shapeList.getSelectedItem().equals("Circle");
+            label2.setVisible(!isCircle);
+            dimField2.setVisible(!isCircle);
         });
 
         setVisible(true);
@@ -89,19 +98,12 @@ public class ShapeGUI extends JFrame implements ActionListener {
             Shape obj;
 
             switch (shape) {
-                case "Rectangle":
-                    obj = new Rectangle(d1, d2);
-                    break;
-                case "Triangle":
-                    obj = new Triangle(d1, d2);
-                    break;
-                default:
-                    obj = new Circle(d1);
-                    break;
+                case "Rectangle": obj = new Rectangle(d1, d2); break;
+                case "Triangle":  obj = new Triangle(d1, d2); break;
+                default:          obj = new Circle(d1); break;
             }
 
-            double area = obj.getArea();
-            areaField.setText(String.valueOf(area));  // Area in textbox
+            areaField.setText(String.valueOf(obj.getArea()));
 
         } catch (NumberFormatException ex) {
             areaField.setText("Invalid Input");
