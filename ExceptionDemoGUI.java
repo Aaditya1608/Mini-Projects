@@ -6,7 +6,7 @@ public class ExceptionDemoGUI extends JFrame {
 
     JTextArea outputArea;
 
-    public ExceptionGUI() {
+    public ExceptionDemoGUI() {
         setTitle("Exception Demo");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,6 +86,6 @@ public class ExceptionDemoGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        new ExceptionGUI().setVisible(true);
+        new ExceptionDemoGUI().setVisible(true);
     }
 }
