@@ -37,7 +37,6 @@ public class ShapeGUI extends JFrame implements ActionListener {
 
         setTitle("Shape Area Calculator");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Main container with vertical layout
         setLayout(new BorderLayout());

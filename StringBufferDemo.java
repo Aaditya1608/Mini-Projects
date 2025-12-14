@@ -48,7 +48,6 @@ public class StringBufferDemo extends JFrame implements ActionListener {
         setTitle("StringBuffer Methods - Swing Demo");
         setSize(600, 450);
         setLayout(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel inputLabel = new JLabel("Initial String:");
         inputLabel.setBounds(40, 30, 100, 25);

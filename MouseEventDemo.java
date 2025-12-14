@@ -11,7 +11,7 @@ public class MouseEventDemo extends JFrame implements MouseListener {
         setTitle("Mouse Event Handling Demo");
         setSize(500, 400);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
         // Register mouse listener
         addMouseListener(this);

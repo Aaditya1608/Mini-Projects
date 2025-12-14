@@ -25,7 +25,6 @@ public class JobApplicationSwing extends JFrame implements ActionListener {
         setTitle("Job Application Form");
         setSize(400, 300);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Layout
         setLayout(new GridLayout(4, 2, 10, 10));
