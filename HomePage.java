@@ -14,7 +14,7 @@ public class HomePage extends JFrame {
         setLayout(new FlowLayout());
 
         // Array of options for the JComboBox
-        String[] options = {"Select an application", "Electricity Bill Calculator", "Employee PaySlip","Shape Area","Exception Program","Multithreading operation", "Producer-Consumer Program"};
+        String[] options = {"Select an application", "Electricity Bill Calculator", "Employee PaySlip","Shape Area","Exception Program","Multithreading operation", "Producer-Consumer Program","Job Application","Mouse Listener","String Compare","String Buffer","File Information"};
         JComboBox<String> appSelector = new JComboBox<>(options);
         add(appSelector);
 
@@ -47,6 +47,26 @@ public class HomePage extends JFrame {
                     case "Producer-Consumer Program":
                         ProducerConsumerGUI pc = new ProducerConsumerGUI();
                         pc.setVisible(true);
+                        break;
+                    case "Job Application":
+                        JobApplicationSwing j = new JobApplicationSwing();
+                        j.setVisible(true);
+                        break;
+                    case "Mouse Listener":
+                        MouseEventDemo m = new MouseEventDemo();
+                        m.setVisible(true);
+                        break;
+                    case "String Compare":
+                        StringCompareDemo sc = new StringCompareDemo();
+                        sc.setVisible(true);
+                        break;
+                    case "String Buffer":
+                        StringBufferDemo sb = new StringBufferDemo();
+                        sb.setVisible(true);
+                        break;
+                    case "File Information":
+                        FileInfoSwing f = new FileInfoSwing();
+                        f.setVisible(true);
                         break;
 
                     default:
