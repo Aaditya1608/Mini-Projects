@@ -12,10 +12,15 @@ public class HomePage extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());
+         
+        JLabel titleLabel = new JLabel("Select an Application:");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        add(titleLabel);
 
         // Array of options for the JComboBox
-        String[] options = {"Select an application", "Electricity Bill Calculator", "Employee PaySlip","Shape Area","Exception Program","Multithreading operation", "Producer-Consumer Program","Job Application","Mouse Listener","String Compare","String Buffer","File Information"};
+        String[] options = {"", "Electricity Bill Calculator", "Employee PaySlip","Shape Area","Exception Program","Multithreading operation", "Producer-Consumer Program","Job Application","Mouse Listener","String Compare","String Buffer","File Information"};
         JComboBox<String> appSelector = new JComboBox<>(options);
+        appSelector.setMaximumRowCount(10);
         add(appSelector);
 
         // Add an ActionListener to the JComboBox

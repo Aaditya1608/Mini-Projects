@@ -13,7 +13,7 @@ public class ElectricityBillCalculator extends JFrame {
         setTitle("Electricity Bill Calculator");
         setSize(400, 400);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         setLayout(new FlowLayout());
 
         add(new JLabel("Consumer Name:"));

@@ -63,7 +63,6 @@ public class StringCompareDemo extends JFrame implements ActionListener {
         setTitle("String Comparison Methods - Swing");
         setSize(500, 350);
         setLayout(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel l1 = new JLabel("Enter String 1:");
         l1.setBounds(40, 40, 120, 25);

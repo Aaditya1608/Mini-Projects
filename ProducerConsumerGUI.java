@@ -98,7 +98,6 @@ public class ProducerConsumerGUI extends JFrame {
 
         setTitle("Producer-Consumer Problem (Inter-thread Communication)");
         setSize(500, 450);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         JLabel title = new JLabel("Producer-Consumer Problem (Inter-Thread Communication)", SwingConstants.CENTER);

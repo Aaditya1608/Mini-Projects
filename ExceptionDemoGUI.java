@@ -9,7 +9,6 @@ public class ExceptionDemoGUI extends JFrame {
     public ExceptionDemoGUI() {
         setTitle("Exception Demo");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         

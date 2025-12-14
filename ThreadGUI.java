@@ -13,7 +13,6 @@ public class ThreadGUI extends JFrame {
     public ThreadGUI() {
         setTitle("Multi-Threaded Number Processor");
         setSize(500, 420);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         JLabel title = new JLabel("Multi threaded Number Processor", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 16));

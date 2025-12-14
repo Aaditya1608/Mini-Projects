@@ -65,8 +65,7 @@ class AssistantProfessor extends Employee {
 public class MainSwing extends JFrame {
     public MainSwing() {
         setTitle("Employee Pay Slip");
-        setSize(400, 400);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Change to DISPOSE_ON_CLOSE
+        setSize(400, 400);// Change to DISPOSE_ON_CLOSE
         setLayout(null);
         setLocationRelativeTo(null); // Center the frame
 

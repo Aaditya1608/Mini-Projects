@@ -13,7 +13,7 @@ public class LoginPage extends JFrame implements ActionListener {
     public LoginPage() {
         setTitle("Login Page");
         setSize(300, 180);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
