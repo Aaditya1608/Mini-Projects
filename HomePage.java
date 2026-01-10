@@ -1,90 +1,75 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 public class HomePage extends JFrame {
 
     public HomePage() {
         setTitle("Home Page");
-        setSize(500, 500);
+        setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new FlowLayout());
-         
-        JLabel titleLabel = new JLabel("Select an Application:");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        add(titleLabel);
+        setLayout(new BorderLayout(10, 10));
 
-        // Array of options for the JComboBox
-        String[] options = {"", "Electricity Bill Calculator", "Employee PaySlip","Shape Area","Exception Program","Multithreading operation", "Producer-Consumer Program","Job Application","Mouse Listener","String Compare","String Buffer","File Information"};
-        JComboBox<String> appSelector = new JComboBox<>(options);
-        appSelector.setMaximumRowCount(10);
-        add(appSelector);
+        // Title
+        JLabel titleLabel = new JLabel("Select an Application", JLabel.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
+        add(titleLabel, BorderLayout.NORTH);
 
-        // Add an ActionListener to the JComboBox
-        appSelector.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedOption = (String) appSelector.getSelectedItem();
-                switch (selectedOption) {
-                    case "Exception Program":
-                        ExceptionDemoGUI exp = new ExceptionDemoGUI();
-                        exp.setVisible(true);
-                        break;
-                    case "Shape Area":
-                        ShapeGUI shape = new ShapeGUI();
-                        shape.setVisible(true);
-                        break;
-                    case "Electricity Bill Calculator":
-                        ElectricityBillCalculator billCalculator = new ElectricityBillCalculator();
-                        billCalculator.setVisible(true);
-                        break;
-                    case "Employee PaySlip":
-                        MainSwing mainswing = new MainSwing();
-                        mainswing.setVisible(true);
-                        break;
-                    case "Multithreading operation":
-                        ThreadGUI thread = new ThreadGUI();
-                        thread.setVisible(true);
-                        break;
-                    case "Producer-Consumer Program":
-                        ProducerConsumerGUI pc = new ProducerConsumerGUI();
-                        pc.setVisible(true);
-                        break;
-                    case "Job Application":
-                        JobApplicationSwing j = new JobApplicationSwing();
-                        j.setVisible(true);
-                        break;
-                    case "Mouse Listener":
-                        MouseEventDemo m = new MouseEventDemo();
-                        m.setVisible(true);
-                        break;
-                    case "String Compare":
-                        StringCompareDemo sc = new StringCompareDemo();
-                        sc.setVisible(true);
-                        break;
-                    case "String Buffer":
-                        StringBufferDemo sb = new StringBufferDemo();
-                        sb.setVisible(true);
-                        break;
-                    case "File Information":
-                        FileInfoSwing f = new FileInfoSwing();
-                        f.setVisible(true);
-                        break;
+        // Panel for buttons (2 per row)
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(0, 2, 15, 15));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-                    default:
-                        // Do nothing if "Select an application" is chosen
-                        break;
-                }
-            }
-        });
+        Font btnFont = new Font("Arial", Font.PLAIN, 14);
+
+        // Helper method for button creation
+        buttonPanel.add(createButton("Electricity Bill Calculator", btnFont, e ->
+                new ElectricityBillCalculator().setVisible(true)));
+
+        buttonPanel.add(createButton("Employee PaySlip", btnFont, e ->
+                new MainSwing().setVisible(true)));
+
+        buttonPanel.add(createButton("Shape Area", btnFont, e ->
+                new ShapeGUI().setVisible(true)));
+
+        buttonPanel.add(createButton("Exception Program", btnFont, e ->
+                new ExceptionDemoGUI().setVisible(true)));
+
+        buttonPanel.add(createButton("Multithreading Operation", btnFont, e ->
+                new ThreadGUI().setVisible(true)));
+
+        buttonPanel.add(createButton("Producer-Consumer Program", btnFont, e ->
+                new ProducerConsumerGUI().setVisible(true)));
+
+        buttonPanel.add(createButton("Job Application", btnFont, e ->
+                new JobApplicationSwing().setVisible(true)));
+
+        buttonPanel.add(createButton("Mouse Listener", btnFont, e ->
+                new MouseEventDemo().setVisible(true)));
+
+        buttonPanel.add(createButton("String Compare", btnFont, e ->
+                new StringCompareDemo().setVisible(true)));
+
+        buttonPanel.add(createButton("String Buffer", btnFont, e ->
+                new StringBufferDemo().setVisible(true)));
+
+        buttonPanel.add(createButton("File Information", btnFont, e ->
+                new FileInfoSwing().setVisible(true)));
+
+        add(buttonPanel, BorderLayout.CENTER);
+    }
+
+    private JButton createButton(String text, Font font, ActionListener action) {
+        JButton button = new JButton(text);
+        button.setFont(font);
+        button.setFocusPainted(false);
+        button.addActionListener(action);
+        return button;
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new HomePage().setVisible(true);
-        });
+        SwingUtilities.invokeLater(() -> new HomePage().setVisible(true));
     }
 }

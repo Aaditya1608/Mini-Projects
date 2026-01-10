@@ -54,6 +54,7 @@ public class ExceptionDemoGUI extends JFrame {
         finally {
             println("Final of WithException");
         }
+        println("End of WithException");
     }
 
     public void noException() {
@@ -68,6 +69,7 @@ public class ExceptionDemoGUI extends JFrame {
         finally {
             println("Final of noException");
         }
+        println("End of NoException");
     }
 
     public void withReturn() {
@@ -82,6 +84,7 @@ public class ExceptionDemoGUI extends JFrame {
         finally {
             println("Final of withReturn");
         }
+        println("End of WithReturn");
     }
 
     public static void main(String[] args) {
