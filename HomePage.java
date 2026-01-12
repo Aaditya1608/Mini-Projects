@@ -1,6 +1,7 @@
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class HomePage extends JFrame {
 
@@ -9,67 +10,98 @@ public class HomePage extends JFrame {
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout());
 
-        // Title
-        JLabel titleLabel = new JLabel("Select an Application", JLabel.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
-        add(titleLabel, BorderLayout.NORTH);
+        JPanel contentPanel = new JPanel(new GridBagLayout());
+        contentPanel.setBackground(new Color(240, 248, 255));
 
-        // Panel for buttons (2 per row)
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(0, 2, 15, 15));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        JLabel titleLabel = new JLabel("Java Open Ended Experiment");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
+        titleLabel.setForeground(new Color(25, 25, 112));
 
-        Font btnFont = new Font("Arial", Font.PLAIN, 14);
+        JLabel subtitleLabel = new JLabel("");
+        subtitleLabel.setFont(new Font("Segoe UI", Font.ITALIC, 16));
+        subtitleLabel.setForeground(Color.DARK_GRAY);
 
-        // Helper method for button creation
-        buttonPanel.add(createButton("Electricity Bill Calculator", btnFont, e ->
-                new ElectricityBillCalculator().setVisible(true)));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 0, 20, 0);
+        contentPanel.add(titleLabel, gbc);
 
-        buttonPanel.add(createButton("Employee PaySlip", btnFont, e ->
-                new MainSwing().setVisible(true)));
+        gbc.gridy = 1;
+        contentPanel.add(subtitleLabel, gbc);
 
-        buttonPanel.add(createButton("Shape Area", btnFont, e ->
-                new ShapeGUI().setVisible(true)));
+        add(contentPanel, BorderLayout.CENTER);
 
-        buttonPanel.add(createButton("Exception Program", btnFont, e ->
-                new ExceptionDemoGUI().setVisible(true)));
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new GridLayout(1, 12));
 
-        buttonPanel.add(createButton("Multithreading Operation", btnFont, e ->
-                new ThreadGUI().setVisible(true)));
+        menuBar.add(createMenu("Electricity Bill", () ->
+                showFrame(new ElectricityBillCalculator())));
 
-        buttonPanel.add(createButton("Producer-Consumer Program", btnFont, e ->
-                new ProducerConsumerGUI().setVisible(true)));
+        menuBar.add(createMenu("Employee Pay Slip", () ->
+                showFrame(new MainSwing())));
 
-        buttonPanel.add(createButton("Job Application", btnFont, e ->
-                new JobApplicationSwing().setVisible(true)));
+        menuBar.add(createMenu("Job Application", () ->
+                showFrame(new JobApplicationSwing())));
 
-        buttonPanel.add(createButton("Mouse Listener", btnFont, e ->
-                new MouseEventDemo().setVisible(true)));
+        menuBar.add(createMenu("File Information", () ->
+                showFrame(new FileInfoSwing())));
 
-        buttonPanel.add(createButton("String Compare", btnFont, e ->
-                new StringCompareDemo().setVisible(true)));
+        menuBar.add(createMenu("Shape Area", () ->
+                showFrame(new ShapeGUI())));
 
-        buttonPanel.add(createButton("String Buffer", btnFont, e ->
-                new StringBufferDemo().setVisible(true)));
+        menuBar.add(createMenu("Exception Handling", () ->
+                showFrame(new ExceptionDemoGUI())));
 
-        buttonPanel.add(createButton("File Information", btnFont, e ->
-                new FileInfoSwing().setVisible(true)));
+        menuBar.add(createMenu("Multithreading", () ->
+                showFrame(new ThreadGUI())));
 
-        add(buttonPanel, BorderLayout.CENTER);
+        menuBar.add(createMenu("Producer-Consumer", () ->
+                showFrame(new ProducerConsumerGUI())));
+
+        menuBar.add(createMenu("Mouse Listener", () ->
+                showFrame(new MouseEventDemo())));
+
+        menuBar.add(createMenu("String Compare", () ->
+                showFrame(new StringCompareDemo())));
+
+        menuBar.add(createMenu("String Buffer", () ->
+                showFrame(new StringBufferDemo())));
+
+        menuBar.add(createMenu("Exit", () -> System.exit(0)));
+
+        setJMenuBar(menuBar);
     }
 
-    private JButton createButton(String text, Font font, ActionListener action) {
-        JButton button = new JButton(text);
-        button.setFont(font);
-        button.setFocusPainted(false);
-        button.addActionListener(action);
-        return button;
+    private void showFrame(JFrame frame) {
+        frame.setVisible(true);
+        frame.setExtendedState(JFrame.NORMAL);
+        frame.toFront();
+        frame.requestFocus();
+    }
+
+    private JMenu createMenu(String title, Runnable action) {
+        JMenu menu = new JMenu(title);
+        menu.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        menu.setHorizontalAlignment(SwingConstants.CENTER);
+        menu.addMenuListener(new MenuListener() {
+            public void menuSelected(MenuEvent e) {
+                MenuSelectionManager.defaultManager().clearSelectedPath();
+                action.run();
+            }
+            public void menuDeselected(MenuEvent e) {}
+            public void menuCanceled(MenuEvent e) {}
+        });
+        return menu;
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {}
+
         SwingUtilities.invokeLater(() -> new HomePage().setVisible(true));
     }
 }
